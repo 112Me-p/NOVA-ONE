@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#08090c" />
+  <meta name="description" content="Frontend Limit Lab — a single-product interactive experience built for GitHub Pages." />
+  <title>NOVA ONE — Frontend Limit Lab</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <canvas id="ambientCanvas" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor" id="cursor"><span>VIEW</span></div>
+
+  <header class="topbar glass">
+    <a class="brand magnetic" href="#hero" data-cursor="TOP" aria-label="NOVA ONE home">
+      <span class="brand-mark">N</span><span>NOVA ONE</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary">
+      <a href="#explore">Explore</a>
+      <a href="#lab">Lab</a>
+      <a href="#configure">Configure</a>
+      <a href="#data">Data</a>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-btn magnetic" id="soundToggle" aria-pressed="false" title="Sound">◌</button>
+      <button class="icon-btn magnetic" id="themeToggle" aria-pressed="false" title="Theme">◐</button>
+      <button class="pill-btn magnetic" id="commandBtn"><span>⌘ K</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section" id="hero" data-theme="dark">
+      <div class="hero-grid"></div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow">FRONTEND LIMIT LAB / 01</p>
+        <h1>ONE PRODUCT.<br><span>MAXIMUM EXPERIENCE.</span></h1>
+        <p class="lede">A cinematic, interactive, zero-backend product world designed to push a GitHub Pages front end as far as practical.</p>
+        <div class="hero-actions">
+          <a href="#explore" class="cta magnetic" data-cursor="ENTER">Enter experience <span>↘</span></a>
+          <button class="text-btn magnetic" id="fullscreenBtn">Fullscreen</button>
+        </div>
+      </div>
+
+      <div class="hero-product stage" id="heroStage" data-tilt>
+        <div class="orb orb-a"></div><div class="orb orb-b"></div>
+        <div class="product-shadow"></div>
+        <div class="product-model product-black" id="heroProduct" aria-label="NOVA ONE product model">
+          <div class="cap"><i></i></div>
+          <div class="neck"></div>
+          <div class="bottle">
+            <div class="shine"></div>
+            <div class="label">
+              <small>NOVA</small>
+              <strong>ONE</strong>
+              <em>ACTIVE SYSTEM</em>
+              <b>01 / 1000 ML</b>
+            </div>
+          </div>
+        </div>
+        <div class="floating-tag tag-1">REAL-TIME UI</div>
+        <div class="floating-tag tag-2">NO BACKEND</div>
+        <div class="floating-tag tag-3">PWA READY</div>
+      </div>
+
+      <div class="hero-meta">
+        <div><span>SCROLL</span><i></i></div>
+        <div><span>BUILD</span><b>STATIC / INTERACTIVE</b></div>
+        <div><span>DEPLOY</span><b>GITHUB PAGES</b></div>
+      </div>
+    </section>
+
+    <section class="manifesto section light-section" id="manifesto" data-theme="light">
+      <div class="section-kicker reveal">WHY THIS EXISTS</div>
+      <div class="manifesto-grid">
+        <h2 class="reveal">Not a landing page.<br>A <span>product world</span> in the browser.</h2>
+        <p class="reveal">This demo deliberately mixes motion design, browser APIs, local state, simulation, configuration, data visualization, responsive behavior and playful micro-interactions—without a server.</p>
+      </div>
+      <div class="marquee" aria-hidden="true"><div>NOVA ONE — MOTION — CANVAS — LOCAL STORAGE — CONFIGURATOR — PWA — SHARE STATE — KEYBOARD UI — </div></div>
+    </section>
+
+    <section class="explore section" id="explore" data-theme="dark">
+      <div class="section-head reveal">
+        <div><p class="eyebrow">02 / EXPLORE</p><h2>Touch the product.</h2></div>
+        <p>Move your pointer across the product, switch finish, inspect hotspots and activate X‑Ray mode with the keyboard key <kbd>X</kbd>.</p>
+      </div>
+
+      <div class="explore-layout">
+        <div class="viewer-card glass reveal" id="viewerCard" data-tilt>
+          <div class="viewer-grid"></div>
+          <div class="product-model product-black large" id="viewerProduct">
+            <div class="cap"><i></i></div><div class="neck"></div>
+            <div class="bottle"><div class="shine"></div><div class="label"><small>NOVA</small><strong>ONE</strong><em>ACTIVE SYSTEM</em><b>01 / 1000 ML</b></div></div>
+            <button class="hotspot hs-1" data-hotspot="FORMULA" aria-label="Formula hotspot">+</button>
+            <button class="hotspot hs-2" data-hotspot="PACKAGING" aria-label="Packaging hotspot">+</button>
+            <button class="hotspot hs-3" data-hotspot="CONTROL" aria-label="Control hotspot">+</button>
+          </div>
+          <div class="viewer-status"><span>DRAG / MOVE</span><b id="viewerStatus">PRODUCT VIEW</b></div>
+        </div>
+
+        <aside class="control-panel reveal">
+          <div class="control-block">
+            <span class="control-label">FINISH</span>
+            <div class="swatches" role="group" aria-label="Product finish">
+              <button class="swatch active" data-finish="black" style="--sw:#111216" aria-label="Black"></button>
+              <button class="swatch" data-finish="silver" style="--sw:#b7bdc6" aria-label="Silver"></button>
+              <button class="swatch" data-finish="acid" style="--sw:#c7ff36" aria-label="Acid"></button>
+            </div>
+          </div>
+          <div class="control-block">
+            <span class="control-label">INTERACTION</span>
+            <button class="panel-row" id="xrayBtn"><span>X‑Ray mode</span><b>X</b></button>
+            <button class="panel-row" id="motionBtn"><span>Auto orbit</span><b>OFF</b></button>
+          </div>
+          <div class="hotspot-info" id="hotspotInfo">
+            <span>HOTSPOT</span><h3>Choose a point.</h3><p>Each hotspot can reveal technical details, media, diagrams or linked product information.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="lab section" id="lab" data-theme="acid">
+      <div class="section-head dark-copy reveal">
+        <div><p class="eyebrow">03 / EXPERIMENT</p><h2>Simulation playground.</h2></div>
+        <p>Move the problem level and watch the browser redraw the scene. Then trigger the product effect.</p>
+      </div>
+
+      <div class="lab-grid">
+        <div class="sim-card reveal">
+          <canvas id="simCanvas"></canvas>
+          <div class="sim-overlay">
+            <div><span>ENVIRONMENT LOAD</span><strong id="loadValue">72</strong></div>
+            <button class="activate-btn magnetic" id="activateBtn" data-cursor="GO">ACTIVATE NOVA</button>
+          </div>
+        </div>
+        <div class="lab-controls reveal">
+          <div class="range-wrap">
+            <label for="loadRange">PROBLEM INTENSITY <span id="rangeLabel">72%</span></label>
+            <input type="range" id="loadRange" min="5" max="100" value="72" />
+          </div>
+          <div class="metric-stack">
+            <div><span>Particle density</span><strong id="densityMetric">7.2×</strong></div>
+            <div><span>Visual noise</span><strong id="noiseMetric">HIGH</strong></div>
+            <div><span>System state</span><strong id="systemMetric">IDLE</strong></div>
+          </div>
+          <p class="small-note">Demo visualization only. This section exists to test real-time state, canvas rendering and transition logic.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="compare section" id="compare" data-theme="light">
+      <div class="section-head reveal">
+        <div><p class="eyebrow">04 / COMPARE</p><h2>One scene. Two states.</h2></div>
+        <p>Drag the divider to compare two visual conditions. This pattern can become before/after, material comparison, treatment result or renovation preview.</p>
+      </div>
+      <div class="compare-box reveal" id="compareBox">
+        <div class="scene scene-after"><div class="scene-copy"><span>AFTER</span><strong>Controlled.</strong></div></div>
+        <div class="scene scene-before" id="beforeScene"><div class="scene-copy"><span>BEFORE</span><strong>Unstable.</strong></div></div>
+        <div class="compare-handle" id="compareHandle"><i>↔</i></div>
+      </div>
+    </section>
+
+    <section class="configure section" id="configure" data-theme="dark">
+      <div class="section-head reveal">
+        <div><p class="eyebrow">05 / CONFIGURE</p><h2>Turn the page into a tool.</h2></div>
+        <p>This block behaves like a lightweight app: state, calculation, persistence and shareable URL configuration—all in the browser.</p>
+      </div>
+
+      <div class="config-shell glass reveal">
+        <div class="config-form">
+          <div class="step">
+            <span class="step-no">01</span><div><label>ENVIRONMENT</label>
+              <div class="segmented" id="envOptions">
+                <button class="active" data-value="Home">Home</button><button data-value="Retail">Retail</button><button data-value="Industrial">Industrial</button><button data-value="Outdoor">Outdoor</button>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-no">02</span><div><label for="areaRange">AREA <b id="areaValue">240 m²</b></label><input type="range" id="areaRange" min="20" max="2000" step="20" value="240" /></div>
+          </div>
+          <div class="step">
+            <span class="step-no">03</span><div><label>INTENSITY</label>
+              <div class="segmented" id="intensityOptions"><button data-value="Low">Low</button><button class="active" data-value="Medium">Medium</button><button data-value="High">High</button></div>
+            </div>
+          </div>
+        </div>
+        <div class="config-result">
+          <div class="result-top"><span>YOUR CONFIGURATION</span><button class="save-btn" id="saveBtn">♡ SAVE</button></div>
+          <div class="big-number"><strong id="litersValue">2.4</strong><span>L</span></div>
+          <div class="result-grid">
+            <div><span>Environment</span><b id="resultEnv">Home</b></div>
+            <div><span>Sessions</span><b id="resultSessions">2</b></div>
+            <div><span>Coverage</span><b id="resultCoverage">240 m²</b></div>
+            <div><span>Intensity</span><b id="resultIntensity">Medium</b></div>
+          </div>
+          <div class="result-actions"><button class="cta magnetic" id="shareBtn">Share configuration <span>↗</span></button><button class="text-btn" id="resetBtn">Reset</button></div>
+          <p class="small-note">Calculation values are demonstration logic—not product instructions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="data section" id="data" data-theme="light">
+      <div class="section-head reveal">
+        <div><p class="eyebrow">06 / DATA</p><h2>Make numbers feel alive.</h2></div>
+        <p>Animated counters, an SVG chart, responsive data cards and scroll-driven reveals—without loading a dashboard framework.</p>
+      </div>
+      <div class="data-grid">
+        <article class="metric-card reveal"><span>INTERACTIONS</span><strong data-counter="24">0</strong><small>front-end patterns</small></article>
+        <article class="metric-card reveal"><span>SERVER REQUEST</span><strong data-counter="0">0</strong><small>required for core demo</small></article>
+        <article class="metric-card reveal"><span>STATE LAYERS</span><strong data-counter="8">0</strong><small>live browser states</small></article>
+        <article class="chart-card reveal">
+          <div class="chart-head"><div><span>INTERACTION CURVE</span><strong>Live motion narrative</strong></div><b>60 FPS*</b></div>
+          <svg viewBox="0 0 800 280" role="img" aria-label="Decorative interaction chart">
+            <defs><linearGradient id="fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#111" stop-opacity=".16"/><stop offset="1" stop-color="#111" stop-opacity="0"/></linearGradient></defs>
+            <path class="area-path" d="M0 220 C80 190 110 130 190 150 S310 250 400 170 S520 70 610 120 S730 190 800 70 L800 280 L0 280 Z" fill="url(#fill)"/>
+            <path class="line-path" d="M0 220 C80 190 110 130 190 150 S310 250 400 170 S520 70 610 120 S730 190 800 70" fill="none" stroke="currentColor" stroke-width="4"/>
+          </svg>
+          <small>*Visual target only. Actual frame rate depends on device/browser.</small>
+        </article>
+      </div>
+    </section>
+
+    <section class="play section" id="play" data-theme="dark">
+      <div class="section-head reveal"><div><p class="eyebrow">07 / PLAY</p><h2>Browser-native tricks.</h2></div><p>Keyboard shortcuts, persistent preferences, fullscreen, Web Share, clipboard fallback, PWA installability and a command palette.</p></div>
+      <div class="play-grid">
+        <button class="play-card magnetic" data-action="command"><span>⌘</span><strong>Command palette</strong><small>CMD / CTRL + K</small></button>
+        <button class="play-card magnetic" data-action="xray"><span>◫</span><strong>X‑Ray product</strong><small>Keyboard X</small></button>
+        <button class="play-card magnetic" data-action="save"><span>♡</span><strong>Local state</strong><small>localStorage</small></button>
+        <button class="play-card magnetic" data-action="fullscreen"><span>↗</span><strong>Fullscreen</strong><small>Browser API</small></button>
+      </div>
+    </section>
+
+    <section class="final section" id="final" data-theme="acid">
+      <div class="final-inner reveal">
+        <p class="eyebrow">FRONTEND LIMIT LAB / END</p>
+        <h2>This is still just<br><span>the browser.</span></h2>
+        <p>No login server. No private database. No backend runtime. The next step is deciding which parts are genuinely valuable for a real product—and which are pure spectacle.</p>
+        <a class="cta dark magnetic" href="#hero">Run it again <span>↑</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>NOVA ONE / FRONTEND LIMIT LAB</span><span>BUILT FOR GITHUB PAGES</span><span id="year"></span></footer>
+
+  <div class="command-backdrop" id="commandBackdrop" aria-hidden="true">
+    <div class="command-box glass" role="dialog" aria-modal="true" aria-label="Command palette">
+      <div class="command-search"><span>⌘</span><input id="commandInput" placeholder="Type a command…" autocomplete="off"/><kbd>ESC</kbd></div>
+      <div class="command-list" id="commandList">
+        <button data-target="#hero"><span>01</span>Go to Hero</button>
+        <button data-target="#explore"><span>02</span>Explore Product</button>
+        <button data-target="#lab"><span>03</span>Open Simulation</button>
+        <button data-target="#configure"><span>04</span>Configure Product</button>
+        <button data-target="#data"><span>05</span>View Data</button>
+        <button data-command="theme"><span>T</span>Toggle theme</button>
+        <button data-command="xray"><span>X</span>Toggle X‑Ray</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="debug" id="debug"><span>FPS</span><b id="fps">60</b><span>THEME</span><b id="debugTheme">dark</b><span>STATE</span><b id="debugState">idle</b></div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

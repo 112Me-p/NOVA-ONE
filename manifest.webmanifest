@@ -1,0 +1,10 @@
+{
+  "name": "NOVA ONE — Frontend Limit Lab",
+  "short_name": "NOVA ONE",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#08090c",
+  "theme_color": "#08090c",
+  "description": "Single-product interactive frontend benchmark for GitHub Pages.",
+  "icons": [{"src":"./assets/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
